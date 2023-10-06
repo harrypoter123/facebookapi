@@ -1,0 +1,24 @@
+{
+  "name": "facebookapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harrypoter123/facebookapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harrypoter123/facebookapi/issues"
+  },
+  "homepage": "https://github.com/harrypoter123/facebookapi#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-sslify": "^1.2.0"
+  }
+}
