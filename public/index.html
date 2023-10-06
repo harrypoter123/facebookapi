@@ -1,3 +1,62 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Facebook Login Example</title>
+</head>
+<body>
+    <h1>Welcome to My App</h1>
+    <div id="fb-root"></div>
+    <fb:login-button 
+        scope="public_profile,email"
+        onlogin="checkLoginState();">
+    </fb:login-button>
+
+    <script>
+ 
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1011531783230456', 
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v18.0' 
+            });
+        };
+
+      
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+             
+                console.log('Logged in successfully.');
+               
+            } else if (response.status === 'not_authorized') {
+             
+                console.log('Not authorized. Please log in with your app.');
+            } else {
+               
+                console.log('Not logged into Facebook.');
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +102,9 @@
             if (response.status === 'connected') {
                 // User is logged in and authenticated
                 console.log('Logged in successfully.');
-                // You can now make API requests or perform other actions.
+
+                // Post a message to the user's feed
+                postToUserFeed("Hello, this message is from Meta Developer API.");
             } else if (response.status === 'not_authorized') {
                 // User is logged into Facebook but not your app
                 console.log('Not authorized. Please log in with your app.');
@@ -51,6 +112,17 @@
                 // User is not logged into Facebook
                 console.log('Not logged into Facebook.');
             }
+        }
+
+        // Function to post to the user's feed
+        function postToUserFeed(message) {
+            FB.api('/me/feed', 'post', { message: message }, function(response) {
+                if (!response || response.error) {
+                    console.log('Error posting to feed:', response.error);
+                } else {
+                    console.log('Post ID:', response.id);
+                }
+            });
         }
     </script>
 </body>
